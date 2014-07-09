@@ -2,7 +2,7 @@ $(document).ready( function() {
 	window.currentClick = 0;
 	var turnX = [];
 	var turnO = [];
-	var winningCombinations = [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8], [1,5,9],]
+	var winningCombinations = [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8], [1,5,9], [3,5,7], [3,6,9]]
 
 	 $('.cell' ).hover(
     function(){
@@ -11,7 +11,7 @@ $(document).ready( function() {
       }
     },
     function(){
-        $(this).css("background-color","");
+        $(this).css("background-color","white");
     }
   );
 
@@ -41,17 +41,30 @@ $(document).ready( function() {
 		for (var i = 0; i < winningCombinations.length; i++){
 			combo = winningCombinations[i];
 				if (turnX.indexOf(combo[0]) !== -1 && turnX.indexOf(combo[1]) !== -1 && turnX.indexOf(combo[2]) !== -1) {
-					alert('X wins');
+					$('#status').text('X wins');
+					endGame();
+					winningCells([combo[0],combo[1],combo[2]]);
         }else if (turnO.indexOf(combo[0]) !== -1 && turnO.indexOf(combo[1]) !== -1 && turnO.indexOf(combo[2]) !== -1) {
-         	alert('O wins');
+         	$('#status').text('O wins');
+         	endGame();
+        }
+        else if (window.currentClick===9){
+        	$('#status').text('Its a draw');
+        	endGame();
         }
     }
 	}
 
+	function endGame(){
+		$('.cell').off('click');
+		$('.cell').off('mouseenter');
+		$('.cell').off('mouseleave');
+		$('.cell').css("background-color","white");
+	}
+
 })
 	
-
-
+	
 
 
 
