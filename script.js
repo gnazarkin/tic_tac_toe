@@ -61,9 +61,10 @@ $(document).ready( function() {
 		$('.cell').off('mouseenter');
 		$('.cell').off('mouseleave');
 		$('.cell').css("background-color","white");
+		console.log(winning)
 
 		for (var i = 0; i <3; i++){
-			$('.cell')[winning[i]].addClass("blue");
+			$('.cell').eq(winning[i]-1).css("background-color","blue")
 		}
 	}
 
