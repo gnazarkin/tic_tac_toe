@@ -34,3 +34,9 @@ h1{
 	margin-right: auto;
 	text-align: center;
 }
+.blue{
+	background-color: blue;
+}
+#.status{
+	font-size: 50px;
+}

@@ -23,6 +23,7 @@ $(document).ready( function() {
 		if(window.currentClick % 2 === 0) {
 			$(this).text('X');
 			$(this).off('click')
+			$('#status').text("O's turn");
 			window.currentClick += 1;
 			var valueOfX = parseInt($(this).attr('id'));
 			turnX.push(valueOfX)
@@ -30,6 +31,7 @@ $(document).ready( function() {
 		else{
 			$(this).text('O');
 			$(this).off('click');
+			$('#status').text("X's turn");
 			window.currentClick += 1;
 			var valueOfO = parseInt($(this).attr('id'));
 			turnO.push(valueOfO)
@@ -42,24 +44,27 @@ $(document).ready( function() {
 			combo = winningCombinations[i];
 				if (turnX.indexOf(combo[0]) !== -1 && turnX.indexOf(combo[1]) !== -1 && turnX.indexOf(combo[2]) !== -1) {
 					$('#status').text('X wins');
-					endGame();
-					winningCells([combo[0],combo[1],combo[2]]);
+					endGame(winningCombinations[i]);
         }else if (turnO.indexOf(combo[0]) !== -1 && turnO.indexOf(combo[1]) !== -1 && turnO.indexOf(combo[2]) !== -1) {
          	$('#status').text('O wins');
-         	endGame();
+         	endGame(winningCombinations[i]);
         }
         else if (window.currentClick===9){
         	$('#status').text('Its a draw');
-        	endGame();
+        	endGame(winningCombinations[i]);
         }
     }
 	}
 
-	function endGame(){
+	function endGame(winning){
 		$('.cell').off('click');
 		$('.cell').off('mouseenter');
 		$('.cell').off('mouseleave');
 		$('.cell').css("background-color","white");
+
+		for (var i = 0; i <3; i++){
+			$('.cell')[winning[i]].addClass("blue");
+		}
 	}
 
 })
