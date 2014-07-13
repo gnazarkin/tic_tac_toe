@@ -45,12 +45,12 @@ $(document).ready( function() {
 			combo = winningCombinations[i];
 				if (turnX.indexOf(combo[0]) !== -1 && turnX.indexOf(combo[1]) !== -1 && turnX.indexOf(combo[2]) !== -1) {
 					$('#status').text('X wins');
-					endGame(winningCombinations[i]);
 					winner = true;
+					endGame(winningCombinations[i]);
         }else if (turnO.indexOf(combo[0]) !== -1 && turnO.indexOf(combo[1]) !== -1 && turnO.indexOf(combo[2]) !== -1) {
          	$('#status').text('O wins');
-         	endGame(winningCombinations[i]);
          	winner = true;
+         	endGame(winningCombinations[i]);
         }
         else if (window.currentClick===9){
         	$('#status').text('Its a draw');
